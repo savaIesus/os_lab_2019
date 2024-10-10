@@ -5,13 +5,13 @@
 #include "utils.h"
 
 int main(int argc, char **argv) {
-  if (argc != 3) {
+  if (argc != 3) {/*проверка на то, что задано 3 аргумента*/
     printf("Usage: %s seed arraysize\n", argv[0]);
     return 1;
   }
 
-  int seed = atoi(argv[1]);
-  if (seed <= 0) {
+  int seed = atoi(argv[1]);/*превращает первый аргумент в int*/
+  if (seed <= 0) {/*проверка на неотрицательность числа*/
     printf("seed is a positive number\n");
     return 1;
   }
@@ -22,10 +22,10 @@ int main(int argc, char **argv) {
     return 1;
   }
 
-  int *array = malloc(array_size * sizeof(int));
-  GenerateArray(array, array_size, seed);
-  struct MinMax min_max = GetMinMax(array, 0, array_size);
-  free(array);
+  int *array = malloc(array_size * sizeof(int));/*выделение памяти под массив*/
+  GenerateArray(array, array_size, seed);/*генерация случайного массива*/
+  struct MinMax min_max = GetMinMax(array, 0, array_size);/*нахождение минимального и максимального элемента массива на заданном промежутке*/
+  free(array);/*очистка памяти*/
 
   printf("min: %d\n", min_max.min);
   printf("max: %d\n", min_max.max);
